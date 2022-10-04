@@ -3,6 +3,7 @@ plugins {
     kotlin("plugin.serialization")
     id("tz.co.asoft.library")
     id("org.jetbrains.dokka")
+    signing
 }
 
 kotlin {
@@ -25,3 +26,8 @@ kotlin {
         }
     }
 }
+
+aSoftOSSLibrary(
+    version = asoft.versions.root.get(),
+    description = "An multiplatform interoperable datetime library"
+)
