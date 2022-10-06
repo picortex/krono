@@ -38,9 +38,9 @@ fun includeSubs(base: String, path: String = base, vararg subs: String) {
     }
 }
 
-rootProject.name = "picortex"
+rootProject.name = "asoft"
 
 includeSubs("functions", "../functions", "core")
-includeSubs("expect", "../expect", "core")
+includeSubs("expect", "../expect", "core", "coroutines")
 
 includeSubs("krono", ".", "api")
