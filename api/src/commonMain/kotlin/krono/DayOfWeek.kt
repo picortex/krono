@@ -1,6 +1,6 @@
 @file:JsExport
 
-package krono;
+package krono
 
 import kotlin.js.JsExport
 
