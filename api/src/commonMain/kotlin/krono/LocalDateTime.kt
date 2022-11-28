@@ -9,7 +9,9 @@ import kotlin.js.JsExport
 @Serializable(with = LocalDateIsoSerializer::class)
 interface LocalDateTime : LocalDate, LocalTime, Comparable<LocalDateTime> {
 
-    override fun compareTo(other: LocalDateTime): Int
+    override fun atDate(date: Int): LocalDateTime
+
+    override fun atEndOfMonth(): LocalDateTime
 
     override fun format(pattern: String): String
 

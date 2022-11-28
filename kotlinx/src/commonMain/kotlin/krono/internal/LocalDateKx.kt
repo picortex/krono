@@ -15,6 +15,8 @@ internal class LocalDateKx(private val wrapped: KxLocalDateTime) : AbstractLocal
 
 //    override fun compareTo(other: LocalDate): Int = wrapped.compareTo(KxLocalDateTime(other.year, other.monthNumber, other.dayOfMonth))
 
+    override fun atDate(date: Int): LocalDate = LocalDateKx(KxLocalDateTime(year, monthNumber, date))
+
     override fun isBefore(other: LocalDate): Boolean {
         TODO("Not yet implemented")
     }

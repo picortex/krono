@@ -15,3 +15,8 @@ fun LocalTime(hour: Int = 0, minutes: Int = 0, seconds: Int = 0, nanoseconds: In
     ensure("seconds", seconds, isWithin = 0..59)
     return LocalTimeImpl(hour, minutes, seconds, nanoseconds)
 }
+
+@JsName("parseLocalTime")
+fun LocalTime(isoString: String): LocalTime {
+    return TODO("")
+}

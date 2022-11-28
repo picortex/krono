@@ -4,13 +4,14 @@ package krono
 
 import krono.internal.LocalDateImpl
 import krono.internal.utils.ensure
+import krono.utils.DaysOfMonth
 import kotlin.js.JsExport
 import kotlin.js.JsName
 
 @JsName("localDate")
 fun LocalDate(year: Int = 1970, month: Int = 1, dayOfMonth: Int = 1): LocalDate {
     ensure("month", month, isWithin = 1..12)
-    ensure("day of month", dayOfMonth, isWithin = 1..31)
+    ensure("day of month", dayOfMonth, isWithin = 1..DaysOfMonth(year, month))
     return LocalDateImpl(year, month, dayOfMonth)
 }
 
