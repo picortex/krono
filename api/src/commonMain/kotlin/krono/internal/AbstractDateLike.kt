@@ -5,7 +5,7 @@ import krono.LocalDate
 import krono.Patterns
 import krono.PureDateFormatter
 
-abstract class AbstractDateLike<D : DateLike<D>> : DateLike<D> {
+abstract class AbstractDateLike : DateLike {
 
     override fun format(pattern: String): String = PureDateFormatter(pattern).formatDate(year, monthNumber, dayOfMonth)
 

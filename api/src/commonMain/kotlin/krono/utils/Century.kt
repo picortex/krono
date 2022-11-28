@@ -6,5 +6,5 @@ import kotlin.js.JsExport
 import kotlin.js.JsName
 import kotlin.math.floor
 
-@JsName("getCenturyFor")
+@JsName("getCenturyOf")
 fun Century(year: Int): Int = floor(year.toDouble() / 100).toInt()

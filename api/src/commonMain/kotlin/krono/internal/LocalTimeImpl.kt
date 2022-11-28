@@ -1,6 +1,8 @@
 package krono.internal
 
 import krono.LocalTime
+import krono.Patterns
+import krono.PureTimeFormatter
 
 internal class LocalTimeImpl(
     override val hour: Int,
@@ -8,9 +10,11 @@ internal class LocalTimeImpl(
     override val second: Int,
     override val nanosecond: Int
 ) : LocalTime {
-    constructor(lt: LocalTime) : this(hour = lt.hour, minute = lt.minute, second = lt.second, nanosecond = lt.nanosecond)
-
     fun LocalTime.toNanos() = nanosecond + (((second) + (minute * 60) + (hour * 60 * 60)) * 1_000_000_000)
 
     override fun compareTo(other: LocalTime): Int = toNanos().compareTo(other.toNanos())
+
+    override fun format(pattern: String): String = PureTimeFormatter(pattern).formatTime(hour, minute, second)
+
+    override fun toIsoString(): String = format(Patterns.ISO_TIME)
 }

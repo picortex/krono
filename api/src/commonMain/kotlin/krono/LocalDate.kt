@@ -7,4 +7,4 @@ import kotlin.js.JsExport
 
 @JsExport
 @Serializable(with = LocalDateIsoSerializer::class)
-interface LocalDate : DateLike<LocalDate>, TemporalComparable<LocalDate>
+interface LocalDate : DateLike, Dateable<LocalDate>, TemporalComparable<LocalDate>

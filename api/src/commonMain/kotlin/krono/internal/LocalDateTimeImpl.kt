@@ -12,8 +12,8 @@ import krono.utils.DaysOfMonth
 class LocalDateTimeImpl(
     override val date: LocalDate,
     override val time: LocalTime
-) : AbstractDateLike<LocalDateTime>(),
-    LocalDateTime, DateLike<LocalDateTime>, TimeLike by time {
+) : AbstractDateLike(),
+    LocalDateTime, DateLike, TimeLike by time {
 
     constructor(
         year: Int,

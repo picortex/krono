@@ -10,7 +10,7 @@ internal class LocalDateImpl(
     override val year: Int,
     override val monthNumber: Int,
     override val dayOfMonth: Int
-) : AbstractDateLike<LocalDate>(), LocalDate {
+) : AbstractDateLike(), LocalDate {
 
     override val month: Month = Month.values().firstOrNull {
         it.number == monthNumber
