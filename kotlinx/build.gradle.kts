@@ -13,7 +13,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                compileOnly(kotlinx.serialization.core)
+                api(projects.kronoApi)
+                api(kotlinx.datetime)
             }
         }
 
@@ -28,5 +29,5 @@ kotlin {
 
 aSoftOSSLibrary(
     version = asoft.versions.root.get(),
-    description = "An multiplatform interoperable datetime library"
+    description = "An implementation of the krono.api based on kotlinx"
 )

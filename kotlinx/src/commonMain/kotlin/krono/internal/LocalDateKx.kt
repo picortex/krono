@@ -8,7 +8,7 @@ import kotlin.jvm.JvmInline
 import kotlinx.datetime.LocalDate as KxLocalDateTime
 
 @JvmInline
-internal value class KxLocalDateWrapper(private val wrapped: KxLocalDateTime) : LocalDate {
+internal value class LocalDateKx(private val wrapped: KxLocalDateTime) : LocalDate {
     override val year: Int get() = wrapped.year
     override val monthNumber: Int get() = wrapped.monthNumber
     override val month: Month get() = Month.valueOf(wrapped.month.name)
