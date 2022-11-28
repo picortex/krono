@@ -5,7 +5,7 @@ import krono.LocalDate
 import krono.Month
 import kotlinx.datetime.LocalDate as KxLocalDateTime
 
-internal class LocalDateKx(private val wrapped: KxLocalDateTime) : AbstractLocalDate() {
+internal class LocalDateKx(private val wrapped: KxLocalDateTime) : AbstractDateLike() {
     override val year: Int get() = wrapped.year
     override val monthNumber: Int get() = wrapped.monthNumber
     override val month: Month get() = Month.valueOf(wrapped.month.name)

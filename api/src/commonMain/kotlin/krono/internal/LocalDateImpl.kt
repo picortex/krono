@@ -4,12 +4,13 @@ import krono.utils.DayOfWeek
 import krono.LocalDate
 import krono.Month
 import krono.utils.DayOfYear
+import krono.utils.DaysOfMonth
 
 internal class LocalDateImpl(
     override val year: Int,
     override val monthNumber: Int,
     override val dayOfMonth: Int
-) : AbstractLocalDate() {
+) : AbstractDateLike<LocalDate>(), LocalDate {
 
     override val month: Month = Month.values().firstOrNull {
         it.number == monthNumber
@@ -19,13 +20,13 @@ internal class LocalDateImpl(
 
     override val dayOfYear = DayOfYear(year, monthNumber, dayOfMonth)
 
+    override fun atEndOfMonth(): LocalDate = atDate(DaysOfMonth(year, monthNumber))
+
     override fun atDate(date: Int): LocalDate = LocalDateImpl(year, monthNumber, date)
 
-    override fun isBefore(other: LocalDate): Boolean {
-        TODO("Not yet implemented")
-    }
+    override fun compareTo(other: LocalDate): Int = dayOfYear.compareTo(other.dayOfYear)
 
-    override fun isAfter(other: LocalDate): Boolean {
-        TODO("Not yet implemented")
-    }
+    override fun isBefore(other: LocalDate): Boolean = this < other
+
+    override fun isAfter(other: LocalDate): Boolean = this > other
 }

@@ -10,5 +10,7 @@ internal class LocalTimeImpl(
 ) : LocalTime {
     constructor(lt: LocalTime) : this(hour = lt.hour, minute = lt.minute, second = lt.second, nanosecond = lt.nanosecond)
 
-    fun toNanos() = nanosecond + (((second) + (minute * 60) + (hour * 60 * 60)) * 1_000_000_000)
+    fun LocalTime.toNanos() = nanosecond + (((second) + (minute * 60) + (hour * 60 * 60)) * 1_000_000_000)
+
+    override fun compareTo(other: LocalTime): Int = toNanos().compareTo(other.toNanos())
 }

@@ -19,7 +19,7 @@ fun LocalDateKx(isoString: String): LocalDate = try {
     LocalDateKx(KxLocalDate.parse(isoString))
 }
 
-@JsName("create")
+@JsName("today")
 fun Today(tz: TimeZone = TimeZones.System): LocalDate {
     val i = Clock.System.now()
     return LocalDateKx(wrapped = i.toLocalDateTime(tz.toTimeZoneKx()).date)

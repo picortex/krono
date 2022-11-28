@@ -1,13 +1,19 @@
 package krono.internal
 
+import krono.DateLike
+import krono.DayOfWeek
 import krono.LocalDate
 import krono.LocalDateTime
 import krono.LocalTime
+import krono.Month
+import krono.TimeLike
 import krono.utils.DaysOfMonth
 
-class LocalDateTimeImpl(val date: LocalDate, val time: LocalTime) : AbstractLocalDate(), LocalDateTime,
-    LocalDate by date,
-    LocalTime by time {
+class LocalDateTimeImpl(
+    override val date: LocalDate,
+    override val time: LocalTime
+) : AbstractDateLike<LocalDateTime>(),
+    LocalDateTime, DateLike<LocalDateTime>, TimeLike by time {
 
     constructor(
         year: Int,
@@ -17,19 +23,16 @@ class LocalDateTimeImpl(val date: LocalDate, val time: LocalTime) : AbstractLoca
         minute: Int,
         second: Int,
         nanosecond: Int
-    ) : this(LocalDate(year, monthNumber, dayOfMonth), LocalDateTime(hour, minute, second, nanosecond))
+    ) : this(LocalDate(year, monthNumber, dayOfMonth), LocalTime(hour, minute, second, nanosecond))
 
-    override fun compareTo(other: LocalDateTime): Int {
-        TODO("Not yet implemented")
-    }
+    override val year: Int get() = date.year
+    override val monthNumber: Int get() = date.monthNumber
+    override val month: Month get() = date.month
+    override val dayOfMonth: Int get() = date.dayOfMonth
+    override val dayOfWeek: DayOfWeek get() = date.dayOfWeek
+    override val dayOfYear: Int get() = date.dayOfYear
 
-    override fun isBefore(other: LocalDate): Boolean {
-        TODO("Not yet implemented")
-    }
-
-    override fun isAfter(other: LocalDate): Boolean {
-        TODO("Not yet implemented")
-    }
+    override fun compareTo(other: LocalDateTime): Int = date.compareTo(other.date) + time.compareTo(other.time)
 
     override fun atDate(date: Int) = LocalDateTimeImpl(year, monthNumber, date, hour, minute, second, nanosecond)
 

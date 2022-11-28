@@ -1,13 +1,11 @@
 package krono.internal
 
+import krono.DateLike
 import krono.LocalDate
 import krono.Patterns
 import krono.PureDateFormatter
-import krono.utils.DaysOfMonth
 
-abstract class AbstractLocalDate : LocalDate {
-
-    override fun atEndOfMonth(): LocalDate = atDate(DaysOfMonth(year, monthNumber))
+abstract class AbstractDateLike<D : DateLike<D>> : DateLike<D> {
 
     override fun format(pattern: String): String = PureDateFormatter(pattern).formatDate(year, monthNumber, dayOfMonth)
 
