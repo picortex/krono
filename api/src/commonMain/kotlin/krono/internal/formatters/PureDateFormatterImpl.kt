@@ -1,8 +1,7 @@
 package krono.internal.formatters
 
-import krono.PureDateFormatter
 import krono.LocalDate
-import kotlin.js.JsExport
+import krono.PureDateFormatter
 
 @PublishedApi
 internal class PureDateFormatterImpl(private val pattern: String) : PureDateFormatter {

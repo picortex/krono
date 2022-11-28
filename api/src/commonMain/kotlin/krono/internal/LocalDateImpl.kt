@@ -1,8 +1,9 @@
 package krono.internal
 
-import krono.DayOfWeek
+import krono.utils.DayOfWeek
 import krono.LocalDate
 import krono.Month
+import krono.utils.DayOfYear
 
 internal class LocalDateImpl(
     override val year: Int,
@@ -10,11 +11,21 @@ internal class LocalDateImpl(
     override val dayOfMonth: Int
 ) : AbstractLocalDate() {
 
-    override val month: Month = Month.values().first { it.number == monthNumber }
-    override val dayOfWeek: DayOfWeek get() = TODO()
-    override val dayOfYear: Int get() = TODO()
+    override val month: Month = Month.values().firstOrNull {
+        it.number == monthNumber
+    } ?: throw IllegalArgumentException("Can't get month of $monthNumber")
 
-    override fun compareTo(other: LocalDate): Int {
+    override val dayOfWeek = DayOfWeek(year, monthNumber, dayOfMonth)
+
+    override val dayOfYear = DayOfYear(year, monthNumber, dayOfMonth)
+
+    override fun atDate(date: Int): LocalDate = LocalDateImpl(year, monthNumber, date)
+
+    override fun isBefore(other: LocalDate): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun isAfter(other: LocalDate): Boolean {
         TODO("Not yet implemented")
     }
 }

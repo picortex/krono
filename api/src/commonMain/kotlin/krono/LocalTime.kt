@@ -4,7 +4,7 @@ package krono
 
 import kotlin.js.JsExport
 
-interface LocalTime : Comparable<LocalTime> {
+interface LocalTime {
     val hour: Int
     val minute: Int
     val second: Int

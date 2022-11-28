@@ -1,0 +1,4 @@
+package krono
+
+class DatePeriod {
+}
