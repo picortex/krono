@@ -11,7 +11,7 @@ import krono.LocalDateTime
 @Serializer(forClass = LocalDateTime::class)
 object LocalDateTimeIsoSerializer : KSerializer<LocalDateTime> {
     override val descriptor = PrimitiveSerialDescriptor(
-        serialName = "krono.LocalTime",
+        serialName = "krono.LocalDateTime",
         kind = PrimitiveKind.STRING
     )
 

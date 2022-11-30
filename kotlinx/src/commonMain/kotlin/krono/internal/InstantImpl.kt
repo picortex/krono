@@ -9,7 +9,7 @@ import krono.toLocalDateTime
 import krono.toTimeZoneKx
 import kotlinx.datetime.Instant.Companion as InstantKx
 
-class InstantImpl(override val epochMilliSecondsAsLong: Long) : Instant {
+data class InstantImpl(override val epochMilliSecondsAsLong: Long) : Instant {
 
     override fun compareTo(other: Instant) = epochMilliSecondsAsLong.compareTo(other.epochMilliSecondsAsLong)
 
