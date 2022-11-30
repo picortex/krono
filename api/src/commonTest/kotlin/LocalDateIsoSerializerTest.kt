@@ -8,10 +8,10 @@ import kotlinx.serialization.json.Json
 import krono.serializers.LocalDateIsoSerializer
 import kotlin.test.Test
 
-class LocalTimeSerializationTest {
+class LocalDateIsoSerializerTest {
 
     @Test
-    fun should_encode_dates_to_valid_json() {
+    fun should_encode_2022_4_8_properly() {
         val date = LocalDate(2022, 4, 8)
         expect(Json.encodeToString(LocalDateIsoSerializer, date)).toBe(""""2022-04-08"""")
     }
