@@ -8,7 +8,7 @@ import kotlin.js.JsExport
 import kotlin.js.JsName
 import kotlin.math.floor
 
-@JsName("getDayOfWeekOf")
+@JsName("dayOfWeekOf")
 fun DayOfWeek(year: Int, month: Int, day: Int): DayOfWeek {
     val k = day
     val m = (12 + (month - 2)) % 12
