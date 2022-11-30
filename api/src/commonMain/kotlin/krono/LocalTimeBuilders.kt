@@ -18,5 +18,10 @@ fun LocalTime(hour: Int = 0, minutes: Int = 0, seconds: Int = 0, nanoseconds: In
 
 @JsName("parseLocalTime")
 fun LocalTime(isoString: String): LocalTime {
-    return TODO("")
+    val splits = isoString.split(":")
+    val hour = splits.getOrNull(0)?.toInt() ?: throw IllegalArgumentException("Hour is missing in missing in $isoString")
+    val minute = splits.getOrNull(1)?.toInt() ?: 0
+    val seconds = splits.getOrNull(2)?.toInt() ?: 0
+    val nanos = splits.getOrNull(3)?.toInt() ?: 0
+    return LocalTime(hour, minute, seconds, nanos)
 }
