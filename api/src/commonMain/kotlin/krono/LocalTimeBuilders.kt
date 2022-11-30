@@ -25,3 +25,10 @@ fun LocalTime(isoString: String): LocalTime {
     val nanos = splits.getOrNull(3)?.toInt() ?: 0
     return LocalTime(hour, minute, seconds, nanos)
 }
+
+@JsName("parseLocalTimeOrMidnight")
+fun LocalTimeOrMidnight(isoString: String): LocalTime = try {
+    LocalTime(isoString)
+} catch (_: Throwable) {
+    LocalTime(0, 0)
+}

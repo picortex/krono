@@ -20,7 +20,7 @@ fun LocalDateTimeEpoch(): LocalDateTime = LocalDateTime(1970, 1, 1)
 
 @JsName("parseLocalDateTime")
 fun LocalDateTime(isoString: String): LocalDateTime {
-    val (year, month, date) = isoString.split("-")
-    val day = if (date.contains("T", ignoreCase = true)) date.split("T")[0] else date
-    return LocalDateTime(year.toInt(), month.toInt(), day.toInt())
+    val date = LocalDate(isoString)
+    val time = LocalTimeOrMidnight(isoString.split("T").getOrNull(1) ?: "")
+    return LocalDateTimeImpl(date, time)
 }
