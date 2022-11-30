@@ -9,7 +9,7 @@ import krono.Month
 import krono.TimeLike
 import krono.utils.DaysOfMonth
 
-class LocalDateTimeImpl(
+data class LocalDateTimeImpl(
     override val date: LocalDate,
     override val time: LocalTime
 ) : AbstractDateLike(),

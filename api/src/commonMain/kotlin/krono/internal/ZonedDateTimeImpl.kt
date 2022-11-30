@@ -11,7 +11,7 @@ import krono.TimeZone
 import krono.ZonedDateTime
 import krono.utils.DaysOfMonth
 
-class ZonedDateTimeImpl(
+data class ZonedDateTimeImpl(
     override val date: LocalDate,
     override val time: LocalTime,
     override val tz: TimeZone

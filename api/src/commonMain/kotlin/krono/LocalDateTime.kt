@@ -3,6 +3,7 @@
 package krono
 
 import kotlinx.serialization.Serializable
+import krono.serializers.LocalDateIsoSerializer
 import kotlin.js.JsExport
 
 @JsExport

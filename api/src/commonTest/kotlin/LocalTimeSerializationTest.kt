@@ -8,7 +8,7 @@ import kotlinx.serialization.json.Json
 import krono.serializers.LocalDateIsoSerializer
 import kotlin.test.Test
 
-class LocalDateSerializationTest {
+class LocalTimeSerializationTest {
 
     @Test
     fun should_encode_dates_to_valid_json() {

@@ -6,7 +6,7 @@ import krono.Month
 import krono.utils.DayOfYear
 import krono.utils.DaysOfMonth
 
-internal class LocalDateImpl(
+internal data class LocalDateImpl(
     override val year: Int,
     override val monthNumber: Int,
     override val dayOfMonth: Int
