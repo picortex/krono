@@ -38,4 +38,20 @@ class LocalTimeIsoSerializerTest {
         expect(time.second).toBe(12)
         expect(time.nanosecond).toBe(0)
     }
+
+    @Test
+    fun should_not_encode_seconds_if_seconds_are_zero() {
+        val time = LocalTime(3, 30)
+        expect(Json.encodeToString(LocalTimeIsoSerializer, time)).toBe(""""03:30"""")
+    }
+
+    @Test
+    fun should_deserialize_shortened_json() {
+        val json = """"23:20""""
+        val time = Json.decodeFromString(LocalTimeIsoSerializer, json)
+        expect(time.hour).toBe(23)
+        expect(time.minute).toBe(20)
+        expect(time.second).toBe(0)
+        expect(time.nanosecond).toBe(0)
+    }
 }
