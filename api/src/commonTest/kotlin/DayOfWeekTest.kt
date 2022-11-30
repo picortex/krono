@@ -4,15 +4,29 @@ import krono.DayOfWeek
 import kotlin.test.Test
 
 class DayOfWeekTest {
+
     @Test
-    fun should_calculate_a_proper_day_of_week() {
-        val dow1 = DayOfWeek(2022, 11, 28)
-        expect(dow1).toBe(DayOfWeek.MONDAY)
+    fun day_2022_01_01_should_be_Saturday() {
+        expect(DayOfWeek(2022, 1, 1), DayOfWeek.SATURDAY)
+    }
 
-        val dow2 = DayOfWeek(2022, 11, 29)
-        expect(dow2).toBe(DayOfWeek.TUESDAY)
+    @Test
+    fun day_2022_02_01_should_be_Tuesday() {
+        expect(DayOfWeek(2022, 2, 1), DayOfWeek.TUESDAY)
+    }
 
-        val dow3 = DayOfWeek(2022, 11, 30)
-        expect(dow3).toBe(DayOfWeek.WEDNESDAY)
+    @Test
+    fun day_2022_11_28_should_be_Monday() {
+        expect(DayOfWeek(2022, 11, 28)).toBe(DayOfWeek.MONDAY)
+    }
+
+    @Test
+    fun day_2022_11_29_should_be_Tuesday() {
+        expect(DayOfWeek(2022, 11, 29)).toBe(DayOfWeek.TUESDAY)
+    }
+
+    @Test
+    fun day_2022_11_30_should_be_Wednesday() {
+        expect(DayOfWeek(2022, 11, 30)).toBe(DayOfWeek.WEDNESDAY)
     }
 }

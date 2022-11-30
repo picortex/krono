@@ -5,8 +5,10 @@ package krono
 import krono.internal.LocalDateTimeImpl
 import kotlin.js.JsExport
 import kotlin.js.JsName
+import kotlin.jvm.JvmOverloads
 
 @JsName("localDateTime")
+@JvmOverloads
 fun LocalDateTime(year: Int = 1970, month: Int = 1, dayOfMonth: Int = 1, hour: Int = 0, minutes: Int = 0, seconds: Int = 0, nanoseconds: Int = 0): LocalDateTime {
     val date = LocalDate(year, month, dayOfMonth)
     val time = LocalTime(hour, minutes, seconds, nanoseconds)
