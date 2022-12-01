@@ -1,4 +1,5 @@
 @file:JsExport
+@file:Suppress("NON_EXPORTABLE_TYPE")
 
 package krono
 
@@ -7,9 +8,13 @@ import krono.internal.utils.ensure
 import krono.utils.DaysOfMonth
 import kotlin.js.JsExport
 import kotlin.js.JsName
+import kotlin.jvm.JvmName
+import kotlin.jvm.JvmOverloads
+
 
 @JsName("localDate")
-fun LocalDate(year: Int = 1970, month: Int = 1, dayOfMonth: Int = 1): LocalDate {
+@JvmOverloads
+fun LocalDate(year: Int = 0, month: Int = 1, dayOfMonth: Int = 1): LocalDate {
     ensure("month", month, isWithin = 1..12)
     ensure("day of month", dayOfMonth, isWithin = 1..DaysOfMonth(year, month))
     return LocalDateImpl(year, month, dayOfMonth)
@@ -19,6 +24,7 @@ fun LocalDate(year: Int = 1970, month: Int = 1, dayOfMonth: Int = 1): LocalDate 
 fun LocalDateEpoch(): LocalDate = LocalDateImpl(1970, 1, 1)
 
 @JsName("parseLocalDate")
+@JvmName("parseLocalDate")
 fun LocalDate(isoString: String): LocalDate {
     val (year, month, date) = isoString.split("-")
     val day = if (date.contains("T", ignoreCase = true)) date.split("T")[0] else date

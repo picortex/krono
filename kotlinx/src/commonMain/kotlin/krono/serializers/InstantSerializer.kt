@@ -7,7 +7,6 @@ import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import krono.Instant
-import krono.internal.InstantImpl
 
 @Serializer(forClass = Instant::class)
 object InstantSerializer : KSerializer<Instant> {
@@ -16,7 +15,7 @@ object InstantSerializer : KSerializer<Instant> {
         kind = PrimitiveKind.LONG
     )
 
-    override fun deserialize(decoder: Decoder): Instant = InstantImpl(decoder.decodeLong())
+    override fun deserialize(decoder: Decoder): Instant = Instant(decoder.decodeLong())
 
     override fun serialize(encoder: Encoder, value: Instant) = encoder.encodeLong(value.epochMilliSecondsAsLong)
 }

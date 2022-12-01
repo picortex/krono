@@ -14,7 +14,7 @@ import krono.utils.DaysOfMonth
 data class ZonedDateTimeImpl(
     override val date: LocalDate,
     override val time: LocalTime,
-    override val tz: TimeZone
+    override val zone: TimeZone
 ) : AbstractDateLike(),
     ZonedDateTime, DateLike, TimeLike by time {
 
@@ -44,11 +44,11 @@ data class ZonedDateTimeImpl(
     """.trimIndent()
 
     override fun compareTo(other: ZonedDateTime): Int {
-        if (tz.id != other.tz.id) throw UnsupportedOperationException(compareError)
+        if (zone.id != other.zone.id) throw UnsupportedOperationException(compareError)
         return date.compareTo(other.date) + time.compareTo(other.time)
     }
 
-    override fun atDate(date: Int) = ZonedDateTimeImpl(year, monthNumber, date, hour, minute, second, nanosecond, tz)
+    override fun atDate(date: Int) = ZonedDateTimeImpl(year, monthNumber, date, hour, minute, second, nanosecond, zone)
 
-    override fun atEndOfMonth() = ZonedDateTimeImpl(date.atDate(DaysOfMonth(year, monthNumber)), time, tz)
+    override fun atEndOfMonth() = ZonedDateTimeImpl(date.atDate(DaysOfMonth(year, monthNumber)), time, zone)
 }

@@ -6,7 +6,6 @@ import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import krono.LocalDate
 import krono.LocalTime
 
 @Serializer(forClass = LocalTime::class)

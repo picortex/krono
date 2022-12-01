@@ -1,7 +1,6 @@
 package krono.internal
 
 import krono.DateLike
-import krono.LocalDate
 import krono.Patterns
 import krono.PureDateFormatter
 
