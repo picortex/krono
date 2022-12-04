@@ -7,9 +7,7 @@ import krono.utils.DayOfYear
 import krono.utils.DaysOfMonth
 
 internal data class LocalDateImpl(
-    override val year: Int,
-    override val monthNumber: Int,
-    override val dayOfMonth: Int
+    override val year: Int, override val monthNumber: Int, override val dayOfMonth: Int
 ) : AbstractDateLike(), LocalDate {
 
     override val month: Month = Month.values().firstOrNull {
@@ -29,4 +27,6 @@ internal data class LocalDateImpl(
     override fun isBefore(other: LocalDate): Boolean = this < other
 
     override fun isAfter(other: LocalDate): Boolean = this > other
+
+    override fun toString() = toIsoString()
 }
