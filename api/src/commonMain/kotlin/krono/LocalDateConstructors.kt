@@ -12,7 +12,8 @@ import kotlin.jvm.JvmName
 import kotlin.jvm.JvmOverloads
 
 
-@JsName("localDate")
+@JsName("localDateAt")
+@JvmName("localDateAt")
 @JvmOverloads
 fun LocalDate(year: Int = 0, month: Int = 1, dayOfMonth: Int = 1): LocalDate {
     ensure("month", month, isWithin = 1..12)
@@ -21,6 +22,7 @@ fun LocalDate(year: Int = 0, month: Int = 1, dayOfMonth: Int = 1): LocalDate {
 }
 
 @JsName("localDateEpoch")
+@JvmName("localDateEpoch")
 fun LocalDateEpoch(): LocalDate = LocalDateImpl(1970, 1, 1)
 
 @JsName("parseLocalDate")
@@ -29,4 +31,12 @@ fun LocalDate(isoString: String): LocalDate {
     val (year, month, date) = isoString.split("-")
     val day = if (date.contains("T", ignoreCase = true)) date.split("T")[0] else date
     return LocalDateImpl(year.toInt(), month.toInt(), day.toInt())
+}
+
+@JsName("parseLocalDateOrNUll")
+@JvmName("parseLocalDateOrNull")
+fun LocalDateOrNull(isoString: String?): LocalDate? = try {
+    LocalDate(isoString!!)
+} catch (err: Throwable) {
+    null
 }
