@@ -10,10 +10,7 @@ import krono.Instant
 
 @Serializer(forClass = Instant::class)
 object InstantSerializer : KSerializer<Instant> {
-    override val descriptor = PrimitiveSerialDescriptor(
-        serialName = "krono.Instant",
-        kind = PrimitiveKind.LONG
-    )
+    override val descriptor = PrimitiveSerialDescriptor("krono.Instant", PrimitiveKind.LONG)
 
     override fun deserialize(decoder: Decoder): Instant = Instant(decoder.decodeLong())
 
