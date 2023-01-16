@@ -51,4 +51,12 @@ data class ZonedDateTimeImpl(
     override fun atDate(date: Int) = ZonedDateTimeImpl(year, monthNumber, date, hour, minute, second, nanosecond, zone)
 
     override fun atEndOfMonth() = ZonedDateTimeImpl(date.atDate(DaysOfMonth(year, monthNumber)), time, zone)
+
+    override fun format(pattern: String): String {
+        return super.format(pattern)
+    }
+
+    override fun toIsoString(): String {
+        return super.toIsoString()
+    }
 }
