@@ -8,7 +8,7 @@ plugins {
 
 kotlin {
     jvm { library() }
-    js(IR) { library() }
+    js(IR) { library()}
 
     sourceSets {
         val commonMain by getting {
