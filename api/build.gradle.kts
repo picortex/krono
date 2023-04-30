@@ -19,7 +19,7 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                implementation(projects.expectCoroutines)
+                implementation(projects.kommanderCoroutines)
                 implementation(kotlinx.serialization.json)
             }
         }
