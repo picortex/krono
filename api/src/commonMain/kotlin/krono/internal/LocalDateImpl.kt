@@ -2,7 +2,9 @@ package krono.internal
 
 import krono.utils.DayOfWeek
 import krono.LocalDate
+import krono.LocalDateEpoch
 import krono.Month
+import krono.TimeZone
 import krono.utils.DayOfYear
 import krono.utils.DaysOfMonth
 
@@ -22,11 +24,19 @@ internal data class LocalDateImpl(
 
     override fun atDate(date: Int): LocalDate = LocalDateImpl(year, monthNumber, date)
 
-    override fun compareTo(other: LocalDate): Int = dayOfYear.compareTo(other.dayOfYear)
+    override fun compareTo(other: LocalDate): Int = (year * 365 + dayOfYear).compareTo((other.year * 365) + other.dayOfYear)
 
     override fun isBefore(other: LocalDate): Boolean = this < other
 
     override fun isAfter(other: LocalDate): Boolean = this > other
+
+    private fun diffSeconds(other: LocalDate): Long = compareTo(other).toLong() * 86400
+
+    override fun toEpochMillisAsLong(): Long = diffSeconds(LocalDateEpoch()) * 1000
+
+    override fun toEpochMillisAsDouble(): Double = toEpochMillisAsLong().toDouble()
+
+    override fun toEpochMillisAsInt(): Int = toEpochMillisAsInt()
 
     override fun toString() = toIsoString()
 }
