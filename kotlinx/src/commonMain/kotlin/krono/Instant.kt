@@ -1,4 +1,5 @@
 @file:JsExport
+@file:Suppress("NON_EXPORTABLE_TYPE")
 
 package krono
 
@@ -9,6 +10,10 @@ import kotlin.js.JsName
 
 @Serializable(with = InstantSerializer::class)
 interface Instant : TemporalComparable<Instant> {
+
+    val epochMicroSecondsAsLong: Long
+
+    val epochMicroSecondsAsDouble: Double get() = epochMicroSecondsAsLong.toDouble()
 
     val epochMilliSecondsAsLong: Long
 

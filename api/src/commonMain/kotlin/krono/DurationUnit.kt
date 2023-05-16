@@ -6,6 +6,7 @@ import kotlin.js.JsExport
 
 enum class DurationUnit {
     NanoSeconds,
+    MicroSeconds,
     MilliSeconds,
     Seconds,
     Minutes,

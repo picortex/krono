@@ -15,7 +15,7 @@ import kotlin.jvm.JvmOverloads
 @JsName("localDateAt")
 @JvmName("localDateAt")
 @JvmOverloads
-fun LocalDate(year: Int = 0, month: Int = 1, dayOfMonth: Int = 1): LocalDate {
+fun LocalDate(year: Int = 1970, month: Int = 1, dayOfMonth: Int = 1): LocalDate {
     ensure("month", month, isWithin = 1..12)
     ensure("day of month", dayOfMonth, isWithin = 1..DaysOfMonth(year, month))
     return LocalDateImpl(year, month, dayOfMonth)

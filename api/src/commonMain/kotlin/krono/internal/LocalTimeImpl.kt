@@ -10,7 +10,7 @@ internal data class LocalTimeImpl(
     override val second: Int,
     override val nanosecond: Int
 ) : LocalTime {
-    fun LocalTime.toNanos() = nanosecond + (((second) + (minute * 60) + (hour * 60 * 60)) * 1_000_000_000)
+    private fun LocalTime.toNanos() = nanosecond + (((second) + (minute * 60) + (hour * 60 * 60)) * 1_000_000_000)
 
     override fun compareTo(other: LocalTime): Int = toNanos().compareTo(other.toNanos())
 
