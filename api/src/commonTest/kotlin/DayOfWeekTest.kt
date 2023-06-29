@@ -1,4 +1,5 @@
 import expect.expect
+import kommander.expect
 import krono.utils.DayOfWeek
 import krono.DayOfWeek
 import kotlin.test.Test
@@ -17,7 +18,7 @@ class DayOfWeekTest {
 
     @Test
     fun day_2022_11_28_should_be_Monday() {
-        expect(DayOfWeek(2022, 11, 28)).toBe(DayOfWeek.MONDAY)
+        expect<DayOfWeek>(DayOfWeek(2022, 11, 28)).toBe(DayOfWeek.MONDAY)
     }
 
     @Test

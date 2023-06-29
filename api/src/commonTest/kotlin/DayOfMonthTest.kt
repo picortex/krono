@@ -1,11 +1,12 @@
 import expect.expect
+import kommander.expect
 import krono.utils.DaysOfMonth
 import kotlin.test.Test
 
 class DayOfMonthTest {
     @Test
     fun feb_of_leap_year_has_29_days() {
-        expect(DaysOfMonth(2020, 2)).toBe(29)
+        expect<Int>(DaysOfMonth(2020, 2)).toBe(29)
     }
 
     @Test

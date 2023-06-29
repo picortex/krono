@@ -1,5 +1,6 @@
 import krono.Month
 import expect.expect
+import kommander.expect
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -13,7 +14,7 @@ class LocalTimeIsoSerializerTest {
     @Test
     fun should_encode_23_20_12_to_valid_json() {
         val time = LocalTime(23, 20, 12)
-        expect(Json.encodeToString(LocalTimeIsoSerializer, time)).toBe(""""23:20:12"""")
+        expect<String>(Json.encodeToString(LocalTimeIsoSerializer, time)).toBe(""""23:20:12"""")
     }
 
     @Serializable
