@@ -1,6 +1,6 @@
 package krono
 
-fun Instant.toDateTimePresenter(tz: TimeZone, formatter: PureDateTimeFormatter): DateTimePresenter {
+fun Instant.toDateTimePresenter(tz: TimeZone, pattern: PresenterPattern): DateTimePresenter {
     val zdt = atZone(tz)
-    return DateTimePresenter(zdt.date, zdt.time, formatter)
+    return DateTimePresenter(zdt.date, zdt.time, pattern)
 }
