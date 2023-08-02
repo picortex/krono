@@ -22,7 +22,7 @@ import krono.utils.conversions.convertSeconds
 import krono.utils.conversions.convertWeeks
 import krono.utils.conversions.convertYears
 
-internal fun convert(value: Double, src: DurationUnit, into: DurationUnit) = when (src) {
+internal fun convert(value: Double, from: DurationUnit, into: DurationUnit) = when (from) {
     NanoSeconds -> convertNanoSeconds(value, into)
     MicroSeconds -> convertMicroSeconds(value, into)
     MilliSeconds -> convertMilliSeconds(value, into)
