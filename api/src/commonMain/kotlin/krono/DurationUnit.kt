@@ -15,7 +15,4 @@ enum class DurationUnit {
     Weeks,
     Months,
     Years,
-    Decades,
-    Centuries,
-    Millenniums
 }

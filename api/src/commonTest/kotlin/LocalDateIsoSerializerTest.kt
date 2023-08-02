@@ -1,9 +1,7 @@
 import krono.Month
 import krono.LocalDate
-import expect.expect
 import kommander.expect
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import krono.serializers.LocalDateIsoSerializer
@@ -14,7 +12,7 @@ class LocalDateIsoSerializerTest {
     @Test
     fun should_encode_2022_4_8_properly() {
         val date = LocalDate(2022, 4, 8)
-        expect<String>(Json.encodeToString(LocalDateIsoSerializer, date)).toBe(""""2022-04-08"""")
+        expect(Json.encodeToString(LocalDateIsoSerializer, date)).toBe(""""2022-04-08"""")
     }
 
     @Serializable

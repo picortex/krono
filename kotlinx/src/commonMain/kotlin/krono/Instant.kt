@@ -25,6 +25,8 @@ interface Instant : TemporalComparable<Instant> {
 
     fun atSystemZone(): ZonedDateTime
 
+    operator fun plus(duration: Duration) : Instant
+
     @JsName("atZoneWithId")
     fun atZone(id: String) = atZone(TimeZone(id))
 }

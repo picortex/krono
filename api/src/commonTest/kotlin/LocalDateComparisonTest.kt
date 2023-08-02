@@ -1,4 +1,3 @@
-import expect.expect
 import kommander.expect
 import krono.LocalDate
 import kotlin.test.Test
@@ -8,7 +7,7 @@ class LocalDateComparisonTest {
     fun date_before_should_appear_as_lesser_in_equality_check() {
         val jan = LocalDate("2022-01-01")
         val feb = LocalDate("2022-2-1")
-        expect<Boolean>(jan.isBefore(feb)).toBe(true, "Jan appears to be greater than feb")
+        expect(jan.isBefore(feb)).toBe(true, "Jan appears to be greater than feb")
     }
 
     @Test
