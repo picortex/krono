@@ -59,4 +59,14 @@ class DurationTest {
         expect(24.months).toBe(2.years)
         expect(3.years).toBe(36.months)
     }
+
+    @Test
+    fun should_return_relative_string() {
+        expect(1.days.toRelativeString()).toBe("a day")
+        expect(2.days.toRelativeString()).toBe("2 days")
+        expect(32.minutes.toRelativeString()).toBe("32 minutes")
+        expect(14.days.toRelativeString()).toBe("2 weeks")
+        expect(59.seconds.toRelativeString()).toBe("59 seconds")
+        expect(60.seconds.toRelativeString()).toBe("a minute")
+    }
 }
