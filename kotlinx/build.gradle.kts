@@ -18,7 +18,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(projects.kronoApi)
+                api(libs.krono.api)
                 api(kotlinx.datetime)
             }
         }
