@@ -3,12 +3,18 @@
 
 package krono
 
-import kotlinx.datetime.Clock
+import kotlinx.datetime.toInstant
 import krono.internal.InstantImpl
 import kotlin.js.JsExport
 import kotlin.js.JsName
+import kotlinx.datetime.LocalDateTime as LocalDateTimeKx
 
 @JsName("_ignore_instantFromLong")
 inline fun Instant(epochMilliSeconds: Long): Instant = InstantImpl(epochMilliSeconds * 1000)
 
-inline fun Now(): Instant = InstantImpl(Clock.System.now().toEpochMilliseconds())
+fun DateTimePresenter.toInstant(): Instant {
+    val ldt = LocalDateTimeKx(year, monthNumber, dayOfMonth, hour, minute, second, nanosecond)
+    return ldt.toInstant(zone.toTimeZoneKx()).toInstant()
+}
+
+fun Clock.currentInstant(): Instant = InstantImpl(currentMicrosAsLong())

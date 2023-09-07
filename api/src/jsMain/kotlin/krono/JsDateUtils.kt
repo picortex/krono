@@ -10,5 +10,3 @@ fun dateOf(ld: LocalDate): Date = Date(ld.year, ld.monthNumber - 1, ld.dayOfMont
 fun dateOrNullOf(ld: LocalDate?): Date? = if (ld == null) null else dateOf(ld)
 
 fun localDateOf(d: Date) = LocalDate(d.toISOString())
-
-fun localOrNullOf(d: Date?) = LocalDateOrNull(d?.toISOString())

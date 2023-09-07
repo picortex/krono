@@ -4,6 +4,7 @@ import krono.LocalTime
 import krono.Patterns
 import krono.PureTimeFormatter
 
+@PublishedApi
 internal data class LocalTimeImpl(
     override val hour: Int,
     override val minute: Int,

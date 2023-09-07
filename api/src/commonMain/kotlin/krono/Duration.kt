@@ -9,16 +9,16 @@ import kotlin.js.JsExport
 import kotlin.math.roundToInt
 
 data class Duration(val value: Double, val unit: DurationUnit) {
-    val nanoSeconds by lazy { convert(value, unit, DurationUnit.NanoSeconds) }
-    val microSeconds by lazy { convert(value, unit, DurationUnit.MicroSeconds) }
-    val milliSeconds by lazy { convert(value, unit, DurationUnit.MilliSeconds) }
-    val seconds by lazy { convert(value, unit, DurationUnit.Seconds) }
-    val minutes by lazy { convert(value, unit, DurationUnit.Minutes) }
-    val hours by lazy { convert(value, unit, DurationUnit.Hours) }
-    val weeks by lazy { convert(value, unit, DurationUnit.Weeks) }
-    val days by lazy { convert(value, unit, DurationUnit.Days) }
-    val months by lazy { convert(value, unit, DurationUnit.Months) }
-    val years by lazy { convert(value, unit, DurationUnit.Years) }
+    val inNanoSeconds by lazy { convert(value, unit, DurationUnit.NanoSeconds) }
+    val inMicroSeconds by lazy { convert(value, unit, DurationUnit.MicroSeconds) }
+    val inMilliSeconds by lazy { convert(value, unit, DurationUnit.MilliSeconds) }
+    val inSeconds by lazy { convert(value, unit, DurationUnit.Seconds) }
+    val inMinutes by lazy { convert(value, unit, DurationUnit.Minutes) }
+    val inHours by lazy { convert(value, unit, DurationUnit.Hours) }
+    val inWeeks by lazy { convert(value, unit, DurationUnit.Weeks) }
+    val inDays by lazy { convert(value, unit, DurationUnit.Days) }
+    val inMonths by lazy { convert(value, unit, DurationUnit.Months) }
+    val inYears by lazy { convert(value, unit, DurationUnit.Years) }
 
     operator fun plus(other: Duration): Duration {
         val converted = convert(other.value, from = other.unit, into = unit)

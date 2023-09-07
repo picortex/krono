@@ -9,7 +9,7 @@ internal class PureDateFormatterImpl(private val pattern: String) : PureDateForm
     private val Int.to2digits get() = (if (this < 10) "0" else "") + this
 
     override fun formatDate(year: Int, month: Int, day: Int): String {
-        val date = LocalDate(year, month, day)
+        val date = LocalDate(year, month, day).getOrThrow()
         val YYYY = date.year.toString()
         val YY = YYYY.takeLast(2)
         val mnth = date.month

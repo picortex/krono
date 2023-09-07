@@ -8,6 +8,7 @@ import krono.TimeZone
 import krono.utils.DayOfYear
 import krono.utils.DaysOfMonth
 
+@PublishedApi
 internal data class LocalDateImpl(
     override val year: Int, override val monthNumber: Int, override val dayOfMonth: Int
 ) : AbstractDateLike(), LocalDate {

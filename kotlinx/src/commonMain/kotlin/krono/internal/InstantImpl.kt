@@ -19,11 +19,11 @@ data class InstantImpl(override val epochMicroSecondsAsLong: Long) : Instant {
 
     override fun atZone(tz: TimeZone): ZonedDateTime {
         val instant = InstantKx.fromEpochMilliseconds(epochMilliSecondsAsLong)
-        val datetime = instant.toLocalDateTime(tz.toTimeZoneKx()).toLocalDateTime()
+        val datetime = instant.toLocalDateTime(tz.toTimeZoneKx()).toLocalDateTime().getOrThrow()
         return ZonedDateTimeImpl(datetime, tz)
     }
 
-    override fun plus(duration: Duration) = InstantImpl((epochMicroSecondsAsLong.microseconds + duration).microSeconds.toLong())
+    override fun plus(duration: Duration) = InstantImpl((epochMicroSecondsAsLong.microseconds + duration).inMicroSeconds.toLong())
 
     override fun atSystemZone(): ZonedDateTime = atZone(TimeZones.System)
 }

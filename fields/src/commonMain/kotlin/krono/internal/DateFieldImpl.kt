@@ -1,11 +1,11 @@
-package symphony.internal
+package krono.internal
 
 import krono.LocalDate
-import krono.LocalDateOrNull
 import neat.ValidationFactory
 import symphony.Changer
-import symphony.DateField
+import krono.DateField
 import symphony.Visibility
+import symphony.internal.BaseFieldImpl
 import kotlin.reflect.KMutableProperty0
 
 @PublishedApi
@@ -17,5 +17,5 @@ internal class DateFieldImpl(
     onChange: Changer<LocalDate>?,
     factory: ValidationFactory<LocalDate>?
 ) : BaseFieldImpl<LocalDate>(name, label, visibility, hint, onChange, factory), DateField {
-    override fun set(iso: String?) = set(LocalDateOrNull(iso))
+    override fun set(iso: String?) = set(LocalDate(iso).getOrNull())
 }

@@ -11,13 +11,15 @@ import krono.PureDateTimeFormatter
 import krono.TimeLike
 import krono.utils.DaysOfMonth
 
-data class LocalDateTimeImpl(
+@PublishedApi
+internal data class LocalDateTimeImpl(
     override val date: LocalDate, override val time: LocalTime
 ) : AbstractDateLike(), LocalDateTime, DateLike by date, TimeLike by time {
 
-    constructor(
+    @PublishedApi
+    internal constructor(
         year: Int, monthNumber: Int, dayOfMonth: Int, hour: Int, minute: Int, second: Int, nanosecond: Int
-    ) : this(LocalDate(year, monthNumber, dayOfMonth), LocalTime(hour, minute, second, nanosecond))
+    ) : this(LocalDate(year, monthNumber, dayOfMonth).getOrThrow(), LocalTime(hour, minute, second, nanosecond).getOrThrow())
 
     override val year: Int get() = date.year
     override val monthNumber: Int get() = date.monthNumber

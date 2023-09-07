@@ -1,9 +1,9 @@
 @file:JsExport
 @file:Suppress("NON_EXPORTABLE_TYPE")
 
-package symphony
+package krono
 
-import krono.LocalDate
+import symphony.RangeField
 import kotlin.js.JsExport
 import kotlin.js.JsName
 

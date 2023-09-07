@@ -15,7 +15,7 @@ object LocalTimeIsoSerializer : KSerializer<LocalTime> {
         kind = PrimitiveKind.STRING
     )
 
-    override fun deserialize(decoder: Decoder): LocalTime = LocalTime(decoder.decodeString())
+    override fun deserialize(decoder: Decoder): LocalTime = LocalTime(decoder.decodeString()).getOrThrow()
 
     override fun serialize(encoder: Encoder, value: LocalTime) {
         var str = value.toIsoString()

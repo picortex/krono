@@ -1,12 +1,12 @@
-package symphony.internal
+package krono.internal
 
 import krono.LocalDate
-import krono.LocalDateOrNull
 import neat.ValidationFactory
 import symphony.Changer
-import symphony.DateRangeField
+import krono.DateRangeField
 import symphony.Range
 import symphony.Visibility
+import symphony.internal.AbstractRangeField
 import kotlin.reflect.KMutableProperty0
 
 @PublishedApi
@@ -17,6 +17,6 @@ internal class DateRangeFieldImpl(
     onChange: Changer<Range<LocalDate>>?,
     factory: ValidationFactory<Range<LocalDate>>?
 ) : AbstractRangeField<LocalDate>(name, label, visibility, onChange, factory), DateRangeField {
-    override fun setStart(iso: String?) = setStart(LocalDateOrNull(iso))
-    override fun setEnd(iso: String?) = setEnd(LocalDateOrNull(iso))
+    override fun setStart(iso: String?) = setStart(LocalDate(iso).getOrNull())
+    override fun setEnd(iso: String?) = setEnd(LocalDate(iso).getOrNull())
 }
