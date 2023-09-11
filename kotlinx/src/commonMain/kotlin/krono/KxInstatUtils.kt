@@ -5,4 +5,4 @@ package krono
 import krono.internal.InstantImpl
 import kotlinx.datetime.Instant as KxInstant
 
-inline fun KxInstant.toInstant(): Instant = InstantImpl(toEpochMilliseconds())
+inline fun KxInstant.toInstant(): Instant = InstantImpl(toEpochMilliseconds() * 1000)
