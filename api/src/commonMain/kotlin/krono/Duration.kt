@@ -8,7 +8,7 @@ import krono.utils.equals
 import kotlin.js.JsExport
 import kotlin.math.roundToInt
 
-data class Duration(val value: Double, val unit: DurationUnit) {
+data class Duration(val value: Double, val unit: DurationUnit) : Comparable<Duration> {
     val inNanoSeconds by lazy { convert(value, unit, DurationUnit.NanoSeconds) }
     val inMicroSeconds by lazy { convert(value, unit, DurationUnit.MicroSeconds) }
     val inMilliSeconds by lazy { convert(value, unit, DurationUnit.MilliSeconds) }
@@ -25,6 +25,16 @@ data class Duration(val value: Double, val unit: DurationUnit) {
         return Duration(value + converted, unit)
     }
 
+    operator fun minus(other: Duration): Duration {
+        val converted = convert(other.value, from = other.unit, into = unit)
+        return Duration(value - converted, unit)
+    }
+
+    override fun compareTo(other: Duration): Int {
+        val converted = convert(other.value, from = other.unit, into = unit)
+        return converted.compareTo(other.value)
+    }
+
     override fun equals(other: Any?): Boolean {
         if (other !is Duration) return false
         val converted = convert(other.value, from = other.unit, into = unit)
@@ -33,7 +43,7 @@ data class Duration(val value: Double, val unit: DurationUnit) {
 
     fun toRelativeString(): String {
         var dur: Duration = this
-        for(entry in DurationUnit.values().reversed()) {
+        for (entry in DurationUnit.values().reversed()) {
             val converted = convert(value, unit, entry)
             dur = Duration(converted, entry)
             if (converted >= 1) break

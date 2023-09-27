@@ -11,7 +11,7 @@ class LocalDateTimeIsoSerializerTest {
 
     @Test
     fun should_encode_2022_4_8_properly() {
-        val dt = LocalDateTime(2022, 4, 8)
+        val dt = LocalDateTime(2022, 4, 8).getOrThrow()
         expect(Json.encodeToString(LocalDateTimeIsoSerializer, dt)).toBe(""""2022-04-08T00:00"""")
     }
 
@@ -20,12 +20,12 @@ class LocalDateTimeIsoSerializerTest {
 
     @Test
     fun should_encode_dates_when_used_as_member_fields() {
-        expect(Json.encodeToString(Person(LocalDateTime(1994, 6, 1)))).toBe("""{"bday":"1994-06-01T00:00"}""")
+        expect(Json.encodeToString(Person(LocalDateTime(1994, 6, 1).getOrThrow()))).toBe("""{"bday":"1994-06-01T00:00"}""")
     }
 
     @Test
     fun should_decode_dates_when_used_as_member_fields() {
-        expect(Json.decodeFromString<Person>("""{"bday":"1994-06-01T00:00"}""")).toBe(Person(LocalDateTime(1994, 6, 1)))
+        expect(Json.decodeFromString<Person>("""{"bday":"1994-06-01T00:00"}""")).toBe(Person(LocalDateTime(1994, 6, 1).getOrThrow()))
     }
 
     @Test

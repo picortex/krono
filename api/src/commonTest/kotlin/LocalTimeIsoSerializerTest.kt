@@ -10,7 +10,7 @@ class LocalTimeIsoSerializerTest {
 
     @Test
     fun should_encode_23_20_12_to_valid_json() {
-        val time = LocalTime(23, 20, 12)
+        val time = LocalTime(23, 20, 12).getOrThrow()
         expect(Json.encodeToString(LocalTimeIsoSerializer, time)).toBe(""""23:20:12"""")
     }
 
@@ -19,12 +19,12 @@ class LocalTimeIsoSerializerTest {
 
     @Test
     fun should_encode_dates_when_used_as_member_fields() {
-        expect(Json.encodeToString(Person(LocalTime(1, 6, 1)))).toBe("""{"alarm":"01:06:01"}""")
+        expect(Json.encodeToString(Person(LocalTime(1, 6, 1).getOrThrow()))).toBe("""{"alarm":"01:06:01"}""")
     }
 
     @Test
     fun should_decode_dates_when_used_as_member_fields() {
-        expect(Json.decodeFromString<Person>("""{"alarm":"01:06:01"}""")).toBe(Person(LocalTime(1, 6, 1)))
+        expect(Json.decodeFromString<Person>("""{"alarm":"01:06:01"}""")).toBe(Person(LocalTime(1, 6, 1).getOrThrow()))
     }
 
     @Test
@@ -39,7 +39,7 @@ class LocalTimeIsoSerializerTest {
 
     @Test
     fun should_not_encode_seconds_if_seconds_are_zero() {
-        val time = LocalTime(3, 30)
+        val time = LocalTime(3, 30).getOrThrow()
         expect(Json.encodeToString(LocalTimeIsoSerializer, time)).toBe(""""03:30"""")
     }
 

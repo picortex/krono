@@ -2,6 +2,7 @@ package krono.internal
 
 import kotlinx.datetime.toLocalDateTime
 import krono.Duration
+import krono.DurationUnit
 import krono.Instant
 import krono.TimeZone
 import krono.TimeZones
@@ -25,5 +26,6 @@ data class InstantImpl(override val epochMicroSecondsAsLong: Long) : Instant {
 
     override fun plus(duration: Duration) = InstantImpl((epochMicroSecondsAsLong.microseconds + duration).inMicroSeconds.toLong())
 
+    override fun minus(other: Instant) = Duration(epochMicroSecondsAsDouble - other.epochMicroSecondsAsDouble, DurationUnit.MicroSeconds)
     override fun atSystemZone(): ZonedDateTime = atZone(TimeZones.System)
 }

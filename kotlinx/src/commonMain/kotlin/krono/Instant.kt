@@ -27,6 +27,8 @@ interface Instant : TemporalComparable<Instant> {
 
     operator fun plus(duration: Duration) : Instant
 
+    operator fun minus(other: Instant) : Duration
+
     @JsName("atZoneWithId")
     fun atZone(id: String) = atZone(TimeZone(id))
 }
