@@ -19,4 +19,6 @@ interface LocalDate : DateLike, Dateable<LocalDate>, TemporalComparable<LocalDat
 
     @JsName("minusDuration")
     operator fun minus(duration: Duration): LocalDate
+
+    operator fun plus(duration: Duration) : LocalDate
 }

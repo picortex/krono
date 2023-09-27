@@ -14,6 +14,6 @@ fun Fields<*>.range(
     visibility: Visibility = Visibility.Visible,
     onChange: Changer<Range<LocalDate>>? = null,
     factory: ValidationFactory<Range<LocalDate>>? = null
-): DateRangeField = getOrCreate(name) {
+): LocalDateRangeField = getOrCreate(name) {
     DateRangeFieldImpl(name, label, visibility, onChange, factory)
 }

@@ -3,9 +3,10 @@ import krono.LocalDate
 import krono.days
 import krono.hours
 import krono.months
+import krono.years
 import kotlin.test.Test
 
-class LocalDateMathTest {
+class LocalDateMinusDurationTest {
     @Test
     fun should_be_able_to_subtract_days_in_december() {
         val dec25 = LocalDate(2020, 12, 25).getOrThrow()
@@ -77,5 +78,19 @@ class LocalDateMathTest {
     fun ensure_no_infinite_loops_when_provided_very_low_values() {
         val jan2 = LocalDate(2020, 1, 2).getOrThrow()
         expect(jan2 - 0.5.hours).toBe(jan2)
+    }
+
+    @Test
+    fun should_be_able_to_subtract_fractional_years() {
+        val dec1 = LocalDate(2020, 12, 1).getOrThrow()
+        val jun1 = LocalDate(2020, 6, 1).getOrThrow()
+        expect(dec1 - 0.5.years).toBe(jun1)
+    }
+
+    @Test
+    fun should_be_able_to_subtract_full_years() {
+        val dec2020 = LocalDate(2020, 12, 25).getOrThrow()
+        val dec2015 = LocalDate(2015, 12, 25).getOrThrow()
+        expect(dec2020 - 5.years).toBe(dec2015)
     }
 }

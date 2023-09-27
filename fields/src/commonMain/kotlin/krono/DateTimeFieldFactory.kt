@@ -19,6 +19,6 @@ fun Fields<*>.dateTime(
     ),
     onChange: Changer<DateTimePresenter>? = null,
     factory: ValidationFactory<DateTimePresenter>? = null
-): DateTimeField = getOrCreate(name) {
+): LocalDateTimeField = getOrCreate(name) {
     DateTimeFieldImpl(name, label, pattern, visibility, hint, onChange, factory)
 }

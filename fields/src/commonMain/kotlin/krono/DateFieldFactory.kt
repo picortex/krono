@@ -14,6 +14,6 @@ fun Fields<*>.date(
     visibility: Visibility = Visibility.Visible,
     onChange: Changer<LocalDate>? = null,
     factory: ValidationFactory<LocalDate>? = null
-): DateField = getOrCreate(name) {
+): LocalDateField = getOrCreate(name) {
     DateFieldImpl(name, label, visibility, hint, onChange, factory)
 }

@@ -32,6 +32,53 @@ internal data class LocalDateImpl(
 
     override fun minus(other: LocalDate) = Duration(compareTo(other).toDouble(), DurationUnit.Days)
 
+    override fun plus(duration: Duration): LocalDate = when (duration.unit) {
+        DurationUnit.Days -> plusDays(duration.value)
+        DurationUnit.Weeks -> plusDays(duration.value * 7)
+        DurationUnit.Months -> plusMonths(duration.value)
+        DurationUnit.Years -> plusYears(duration.value)
+        else -> plusDays(duration.inDays)
+    }
+
+    private fun plusDays(days: Double): LocalDate {
+        if (days == 0.0) return this
+        val numberOfDaysInMonth = month.numberOfDays(year)
+        if ((dayOfMonth + days) <= numberOfDaysInMonth) {
+            return LocalDateImpl(year, monthNumber, dayOfMonth + days.toInt())
+        }
+        var yearX = year
+        var monthX = monthNumber + 1
+        if (monthX == 13) {
+            monthX = 1
+            yearX += 1
+        }
+        return LocalDateImpl(yearX, monthX, 1).plusDays(dayOfMonth + days - numberOfDaysInMonth - 1)
+    }
+
+    private fun plusMonths(months: Double): LocalDate {
+        if (months == 0.0) return this
+        if (!months.toString().endsWith(".0")) {
+            return plusDays(30 * months)
+        }
+        if ((months + monthNumber) <= 12) {
+            return LocalDateImpl(year, (monthNumber + months).toInt(), dayOfMonth)
+        }
+
+        if (months <= monthNumber) {
+            return LocalDateImpl(year + 1, (monthNumber + months).toInt() % 12, dayOfMonth)
+        }
+
+        return LocalDateImpl(year + 1, 1, dayOfMonth).plusMonths(months + monthNumber - 12 - 1)
+    }
+
+    private fun plusYears(years: Double): LocalDate {
+        if (years == 0.0) return this
+        if (!years.toString().endsWith(".0")) {
+            return plusMonths(years * 12)
+        }
+        return LocalDateImpl(year + years.toInt(), monthNumber, dayOfMonth)
+    }
+
     override fun minus(duration: Duration): LocalDate = when (duration.unit) {
         DurationUnit.Days -> minusDays(duration.value)
         DurationUnit.Weeks -> minusDays(duration.value * 7)

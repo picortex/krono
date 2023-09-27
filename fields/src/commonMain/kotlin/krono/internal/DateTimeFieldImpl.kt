@@ -27,7 +27,7 @@ internal class DateTimeFieldImpl(
 ) : BaseFieldImpl<DateTimePresenter>(name, label, visibility, hint, onChange, factory), DateTimeField {
     override fun setDateTimeIso(iso: String?) {
         val dt = LocalDateTime(iso).getOrNull() ?: return
-        val out = state.value.output?.copy(date = dt.date, time = dt.time) ?: DateTimePresenter(
+        val out = state.value.output?.copy(date = dt.date, time = dt.time) ?: LocalDateTimePresenter(
             date = dt.date,
             time = dt.time,
             zone = TimeZones.System,
@@ -38,7 +38,7 @@ internal class DateTimeFieldImpl(
 
     override fun setDateIso(iso: String?) {
         val date = LocalDate(iso).getOrNull() ?: return
-        val out = state.value.output?.copy(date = date) ?: DateTimePresenter(
+        val out = state.value.output?.copy(date = date) ?: LocalDateTimePresenter(
             date = date,
             time = Midnight(),
             zone = TimeZones.System,
@@ -49,7 +49,7 @@ internal class DateTimeFieldImpl(
 
     override fun setTimeIso(iso: String?) {
         val time = LocalTime(iso).getOrNull() ?: return
-        val out = state.value.output?.copy(time = time) ?: DateTimePresenter(
+        val out = state.value.output?.copy(time = time) ?: LocalDateTimePresenter(
             date = LocalDateEpoch(),
             time = time,
             zone = TimeZones.System,
