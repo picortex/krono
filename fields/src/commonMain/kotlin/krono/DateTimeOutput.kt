@@ -5,5 +5,5 @@ import krono.Instant
 
 class DateTimeOutput(
     val instant: Instant,
-    val presenter: LocalDateTimePresenter
+    val presenter: DateTimePresenter
 )
